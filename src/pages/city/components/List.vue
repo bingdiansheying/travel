@@ -12,47 +12,15 @@
 			<div class="area">
 				<div class="title bordertopbottom">热门城市</div>
 				<div class="button-list">
-					<div class="button-wrapper">
-						<div class="button">北京</div>
-					</div>
-					<div class="button-wrapper">
-						<div class="button">北京</div>
-					</div>
-					<div class="button-wrapper">
-						<div class="button">北京</div>
-					</div>
-					<div class="button-wrapper">
-						<div class="button">北京</div>
+					<div class="button-wrapper" v-for='item of hot' :key='item.id'>
+						<div class="button">{{item.name}}</div>
 					</div>
 				</div>
 			</div>
-			<div class="area">
-				<div class="title bordertopbottom">A</div>
+			<div class="area" v-for='(item,key) of cities'>
+				<div class="title bordertopbottom">{{key}}</div>
 				<div class="item-list">
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-				</div>
-				<div class="title bordertopbottom">A</div>
-				<div class="item-list">
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-				</div>
-				<div class="title bordertopbottom">A</div>
-				<div class="item-list">
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
-					<div class="item">爱丽儿</div>
+					<div class="item" v-for='inneritem of item' :key='inneritem.id'>{{inneritem.name}}</div>
 				</div>
 			</div>
 		</div>
@@ -63,6 +31,10 @@
 import Bscroll from 'better-scroll'
 export default {
 	name: 'CityList',
+	props:{
+		cities:Object,
+		hot: Array
+	},
 	mounted(){
 		this.scroll = new Bscroll(this.$refs.wrapper)
 	}
